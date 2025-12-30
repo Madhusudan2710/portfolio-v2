@@ -25,30 +25,33 @@ const ANIMATION_CONFIG = {
   SCROLL_START_CARD: "top 70%",
 } as const
 
-// Sample certifications data with proper typing
-const certifications: Certification[] = [
-  {
-    id: "cert-1",
-    title: "Sample Certification",
-    org: "Sample Organization",
-    date: "2024",
-    type: "Professional",
-    credentialUrl: "https://example.com/credential"
-  }
-  // Add your actual certifications data here
-]
-
 export function Certifications() {
   const [activeIdx, setActiveIdx] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [certifications, setCertifications] = useState<Certification[]>([])
   const sectionRef = useRef<HTMLElement>(null)
   const cardContainerRef = useRef<HTMLDivElement>(null)
   const scrollTriggerRef = useRef<ScrollTrigger[]>([])
 
+  // Fetch certifications data from the server
+  useEffect(() => {
+    const fetchCertifications = async () => {
+      try {
+        const response = await fetch("/api/certifications")
+        const data = await response.json()
+        setCertifications(data)
+      } catch (error) {
+        console.error("Failed to fetch certifications:", error)
+      }
+    }
+
+    fetchCertifications()
+  }, [])
+
   // Memoized current certification for performance
   const currentCertification = useMemo(() =>
     certifications[activeIdx] || certifications[0],
-    [activeIdx]
+    [activeIdx, certifications]
   )
 
   // Optimized navigation functions with useCallback

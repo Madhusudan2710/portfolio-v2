@@ -1,3 +1,21 @@
+-- PostgreSQL setup script
+
+-- Create database
+CREATE DATABASE portfolio_db;
+
+-- Connect to the database
+\c portfolio_db;
+
+-- Create a sample table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create skills table
 CREATE TABLE skills (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -5,6 +23,7 @@ CREATE TABLE skills (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create certifications table
 CREATE TABLE certifications (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
@@ -14,6 +33,7 @@ CREATE TABLE certifications (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create experience table
 CREATE TABLE experience (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
@@ -22,3 +42,7 @@ CREATE TABLE experience (
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Insert sample data
+INSERT INTO users (username, email, password) VALUES
+('admin', 'admin@example.com', 'securepassword');
