@@ -33,9 +33,7 @@ export function About() {
           <div className="flex-1">
             <h3 className="text-2xl font-bold mb-6">Full Stack Developer & Web Designer</h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              I am a passionate developer with expertise in building responsive and dynamic web applications. I have
-              strong frontend development skills and am currently enhancing my backend capabilities to become a
-              well-rounded Full Stack Developer.
+              I am a Full-Stack Developer with a strong foundation in Python, specializing in Django and FastAPI to build scalable, high-performance backends. I leverage the MERN stack to build responsive React frontends, supported by a solid academic understanding of C++ and software engineering principles. I am a dedicated developer committed to writing clean code and delivering impactful, end-to-end web solutions in collaborative environments.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">

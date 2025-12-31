@@ -232,11 +232,10 @@ export const Hero = memo(() => {
               Hi, I'm <span className="text-primary gradient-text">Madhusudan</span>
             </h1>
             <h2 className="text-2xl md:text-3xl font-bold text-muted-foreground mb-6 text-balance">
-              Full Stack Developer & Data Analyst
+              Python & Full Stack Developer
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 text-pretty">
-              I am a passionate developer with strong frontend skills in HTML, CSS, and JavaScript. Currently, I'm
-              expanding my knowledge in backend technologies to become a well-rounded Full Stack Developer.
+              As a Python and full-stack developer, I’m constantly learning new tools and improving my skills to build better, more efficient applications.
             </p>
 
             {/* Action Buttons */}
