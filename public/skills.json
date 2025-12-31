@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Frontend Development",
+    "icon": "🌐",
+    "skills": [
+      { "name": "HTML", "level": 90 },
+      { "name": "CSS", "level": 85 },
+      { "name": "JavaScript", "level": 95 },
+      { "name": "React", "level": 90 }
+    ]
+  },
+  {
+    "title": "Backend Development",
+    "icon": "🖥️",
+    "skills": [
+      { "name": "Node.js", "level": 80 },
+      { "name": "Express", "level": 75 },
+      { "name": "MongoDB", "level": 70 },
+      { "name": "SQL", "level": 65 }
+    ]
+  },
+  {
+    "title": "Data Analysis",
+    "icon": "📊",
+    "skills": [
+      { "name": "Python", "level": 85 },
+      { "name": "Pandas", "level": 80 },
+      { "name": "NumPy", "level": 75 },
+      { "name": "Matplotlib", "level": 70 }
+    ]
+  },
+  {
+    "title": "DevOps",
+    "icon": "⚙️",
+    "skills": [
+      { "name": "Docker", "level": 80 },
+      { "name": "Kubernetes", "level": 70 },
+      { "name": "CI/CD", "level": 75 },
+      { "name": "AWS", "level": 65 }
+    ]
+  }
+]

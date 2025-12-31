@@ -1,0 +1,14 @@
+[
+  {
+    "company": "TechCorp",
+    "role": "Software Engineer",
+    "duration": "Jan 2020 - Dec 2023",
+    "description": "Developed scalable web applications and optimized backend services."
+  },
+  {
+    "company": "Innovatech",
+    "role": "Frontend Developer",
+    "duration": "Jan 2018 - Dec 2019",
+    "description": "Designed and implemented user interfaces for various projects."
+  }
+]
