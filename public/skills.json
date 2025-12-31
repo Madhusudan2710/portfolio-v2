@@ -5,8 +5,18 @@
     "skills": [
       { "name": "HTML", "level": 90 },
       { "name": "CSS", "level": 85 },
-      { "name": "JavaScript", "level": 95 },
-      { "name": "React", "level": 90 }
+      { "name": "JavaScript", "level": 75 },
+      { "name": "React", "level": 80 }
+    ]
+  },
+  {
+    "title": "Frameworks & Libraries",
+    "icon": "🛠️",
+    "skills": [
+      { "name": "Bootstrap", "level": 80 },
+      { "name": "Django", "level": 75 },
+      { "name": "FastAPI", "level": 70 },
+      { "name": "Tailwind CSS", "level": 65 }
     ]
   },
   {
@@ -15,8 +25,9 @@
     "skills": [
       { "name": "Node.js", "level": 80 },
       { "name": "Express", "level": 75 },
+      { "name": "PostgreSQL", "level": 70 },
       { "name": "MongoDB", "level": 70 },
-      { "name": "SQL", "level": 65 }
+      { "name": "MySQL", "level": 65 }
     ]
   },
   {
@@ -24,19 +35,19 @@
     "icon": "📊",
     "skills": [
       { "name": "Python", "level": 85 },
-      { "name": "Pandas", "level": 80 },
-      { "name": "NumPy", "level": 75 },
-      { "name": "Matplotlib", "level": 70 }
+      { "name": "Tableau", "level": 75 },
+      { "name": "Power BI", "level": 70 },
+      { "name": "Pandas", "level": 50 },
+      { "name": "NumPy", "level": 50 },
+      { "name": "Matplotlib", "level": 50 }
     ]
   },
   {
-    "title": "DevOps",
-    "icon": "⚙️",
+    "title": "Version Control",
+    "icon": "🔧",
     "skills": [
-      { "name": "Docker", "level": 80 },
-      { "name": "Kubernetes", "level": 70 },
-      { "name": "CI/CD", "level": 75 },
-      { "name": "AWS", "level": 65 }
+      { "name": "Git", "level": 80 },
+      { "name": "GitHub", "level": 75 }
     ]
   }
 ]

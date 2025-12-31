@@ -231,7 +231,7 @@ export function Skills() {
                                        transition-colors">
 												{skill.level}%
 											</span>
-											<span className="block text-[11px] font-black uppercase
+											<span className="block text-[13px] font-black uppercase
                                        tracking-[0.2em]
                                        text-muted-foreground
                                        group-hover/skill:text-primary-foreground

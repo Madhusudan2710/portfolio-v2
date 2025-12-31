@@ -244,7 +244,7 @@ export function Certifications() {
                   <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-8">
                     <span className="px-4 py-1.5 rounded-xl text-xs font-black uppercase tracking-[0.2em]" style={{ background: "rgba(0, 212, 255, 0.15)", color: "#00d4ff" }}>
                       {currentCertification.type}
-                    </span>
+                    </span> <br />
                     <div className="flex items-center gap-2 text-zinc-500 text-sm font-bold">
                       <Calendar className="w-4 h-4" />
                       {currentCertification.date}
