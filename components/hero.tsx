@@ -1,10 +1,11 @@
 "use client"
 
 import type React from "react"
-
+import { useEffect, useRef } from "react"
 import { Github, Linkedin, Twitter, Instagram, Download, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { memo, useMemo } from "react"
+import gsap from "gsap"
 
 // Image configuration with responsive breakpoints and validation
 const PROFILE_IMAGE = {
@@ -189,13 +190,13 @@ const ProfileImage = memo(() => {
         </defs>
 
         {/* 🔵 BORDER */}
-        <image href="/images/Profile.png" width="500" height="700" filter="url(#personBorder)" />
+        <image href="/images/profile.jpeg" width="500" height="700" filter="url(#personBorder)" />
 
         {/* ✨ GLOW */}
-        <image href="/images/Profile.png" width="500" height="700" filter="url(#personGlow)" opacity="0.6" />
+        <image href="/images/profile.jpeg" width="500" height="700" filter="url(#personGlow)" opacity="0.6" />
 
         {/* 🧍 MAIN IMAGE */}
-        <image href="/images/Profile.png" width="500" height="700" preserveAspectRatio="xMidYMid meet" />
+        <image href="/images/profile.jpeg" width="500" height="700" preserveAspectRatio="xMidYMid meet" />
       </svg>
     </div>
   )
@@ -203,6 +204,88 @@ const ProfileImage = memo(() => {
 ProfileImage.displayName = "ProfileImage"
 
 export const Hero = memo(() => {
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const subtitleRef = useRef<HTMLHeadingElement>(null)
+  const descriptionRef = useRef<HTMLParagraphElement>(null)
+  const buttonsRef = useRef<HTMLDivElement>(null)
+  const socialRef = useRef<HTMLDivElement>(null)
+  const profileRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline()
+
+      // Stagger animation for the main title text (word by word)
+      if (titleRef.current) {
+        const words = titleRef.current.querySelectorAll(".hero-word")
+        if (words.length > 0) {
+          tl.fromTo(
+            words,
+            { opacity: 0, y: 40, rotationX: -90 },
+            { opacity: 1, y: 0, rotationX: 0, duration: 0.8, stagger: 0.1, ease: "back.out(1.2)" },
+            0,
+          )
+        } else {
+          // Fallback if words aren't wrapped
+          tl.from(titleRef.current, { opacity: 0, y: 40, duration: 0.8, ease: "power3.out" }, 0)
+        }
+      }
+
+      // Subtitle entrance
+      if (subtitleRef.current) {
+        tl.from(subtitleRef.current, { opacity: 0, y: 30, duration: 0.6, ease: "power2.out" }, "-=0.3")
+      }
+
+      // Description entrance
+      if (descriptionRef.current) {
+        tl.from(descriptionRef.current, { opacity: 0, y: 30, duration: 0.6, ease: "power2.out" }, "-=0.3")
+      }
+
+      // Buttons entrance with scale effect
+      if (buttonsRef.current) {
+        const buttons = buttonsRef.current.querySelectorAll("a")
+        tl.fromTo(
+          buttons,
+          { opacity: 0, scale: 0.8, y: 20 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "back.out(1.5)" },
+          "-=0.3",
+        )
+      }
+
+      // Social links entrance
+      if (socialRef.current) {
+        const links = socialRef.current.querySelectorAll("a")
+        tl.fromTo(
+          links,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" },
+          "-=0.3",
+        )
+      }
+
+      // Profile image entrance with rotation and scale
+      if (profileRef.current) {
+        tl.fromTo(
+          profileRef.current,
+          { opacity: 0, scale: 0.5, rotationY: 90 },
+          { opacity: 1, scale: 1, rotationY: 0, duration: 1, ease: "back.out(1.3)" },
+          0.2,
+        )
+
+        // Continuous subtle floating animation for profile
+        gsap.to(profileRef.current, {
+          y: -15,
+          duration: 3,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+        })
+      }
+    })
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <section
       id="home"
@@ -215,19 +298,23 @@ export const Hero = memo(() => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
           {/* Content Section */}
           <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-balance leading-tight">
-              Hi, I'm <span className="text-primary">Madhusudan</span>
+            <h1 ref={titleRef} className="text-5xl md:text-7xl font-extrabold mb-6 text-balance leading-tight">
+              <span className="hero-word inline-block">Hi,</span> <span className="hero-word inline-block">I'm</span>{" "}
+              <span className="hero-word inline-block text-primary">Madhusudan</span>
             </h1>
-            <h2 className="text-xl md:text-2xl font-semibold text-accent mb-6 text-balance">
+            <h2 ref={subtitleRef} className="text-xl md:text-2xl font-semibold text-accent mb-6 text-balance">
               Full Stack Developer & Python Specialist
             </h2>
-            <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto lg:mx-0 text-pretty leading-relaxed">
+            <p
+              ref={descriptionRef}
+              className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto lg:mx-0 text-pretty leading-relaxed"
+            >
               I craft elegant, scalable web solutions using modern technologies. Specializing in Python backends with
               Django & FastAPI, and responsive React frontends for exceptional user experiences.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
+            <div ref={buttonsRef} className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
               <Link
                 href="/Madhusudan_cv_7719.pdf"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-all duration-200 hover:shadow-lg hover:shadow-primary/30 active:scale-95"
@@ -247,11 +334,78 @@ export const Hero = memo(() => {
             </div>
 
             {/* Social Links */}
-            <SocialLinks />
+            <div ref={socialRef} className="flex justify-center lg:justify-start gap-6" role="list">
+              {SOCIAL_LINKS.map(({ href, icon: Icon, label, isExternal }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  {...(isExternal && {
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  })}
+                  className="text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded-md p-1"
+                  aria-label={label}
+                  role="listitem"
+                >
+                  <Icon className="w-6 h-6" aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Profile Image Section */}
-          <ProfileImage />
+          <div ref={profileRef} className="relative hidden lg:flex lg:justify-center lg:items-center">
+            <div
+              className="absolute inset-0 opacity-30 pointer-events-none"
+              style={{
+                backgroundImage: `
+                linear-gradient(0deg, transparent 24%, rgba(148, 0, 211, .1) 25%, rgba(148, 0, 211, .1) 26%, transparent 27%, transparent 74%, rgba(148, 0, 211, .1) 75%, rgba(148, 0, 211, .1) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(148, 0, 211, .1) 25%, rgba(148, 0, 211, .1) 26%, transparent 27%, transparent 74%, rgba(148, 0, 211, .1) 75%, rgba(148, 0, 211, .1) 76%, transparent 77%, transparent)
+              `,
+                backgroundSize: "50px 50px",
+              }}
+            />
+
+            <svg viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg" className="w-80 h-[420px] relative z-10">
+              <defs>
+                {/* BORDER */}
+                <filter id="personBorder" x="-30%" y="-30%" width="160%" height="160%">
+                  <feMorphology in="SourceAlpha" operator="dilate" radius="3" result="outline" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="
+                  0 0 0 0 0
+                  0 1 0 0 0.7
+                  0 1 0 0 1
+                  0 0 0 1 0"
+                  />
+                  <feComposite in="outline" in2="SourceAlpha" operator="out" />
+                </filter>
+
+                {/* GLOW */}
+                <filter id="personGlow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="12" />
+                  <feColorMatrix
+                    type="matrix"
+                    values="
+                  0 0 0 0 0
+                  0 1 0 0 0.6
+                  0 1 0 0 1
+                  0 0 0 1 0"
+                  />
+                </filter>
+              </defs>
+
+              {/* 🔵 BORDER */}
+              <image href="/images/Profile.png" width="500" height="700" filter="url(#personBorder)" />
+
+              {/* ✨ GLOW */}
+              <image href="/images/Profile.png" width="500" height="700" filter="url(#personGlow)" opacity="0.6" />
+
+              {/* 🧍 MAIN IMAGE */}
+              <image href="/images/Profile.png" width="500" height="700" preserveAspectRatio="xMidYMid meet" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>

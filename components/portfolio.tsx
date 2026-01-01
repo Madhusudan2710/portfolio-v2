@@ -35,7 +35,7 @@ export function Portfolio() {
 
   // Fetch & normalize data
   useEffect(() => {
-    fetch("/projects.json")
+    fetch("/data/projects.json")
       .then((res) => res.json())
       .then((data: RawProject[]) => {
         const normalized: Project[] = data.map((p) => ({

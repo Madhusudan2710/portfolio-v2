@@ -24,7 +24,7 @@ export function Experience() {
   const [activeCertificate, setActiveCertificate] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch("/experience.json")
+    fetch("/data/experience.json")
       .then((res) => res.json())
       .then((data: Experience[]) => setExperience(data))
   }, [])
