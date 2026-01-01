@@ -41,8 +41,8 @@ export function Navbar() {
           <div className="bg-primary p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
             <Code2 className="w-5 h-5 text-primary-foreground" />
           </div>
-          <span className="text-lg font-bold tracking-tight">
-            MADHU<span className="text-accent">SUDAN</span>
+          <span className="text-lg font-bold tracking-tight font-signature">
+            MADHU<span className="text-accent font-signature">SUDAN</span>
           </span>
         </Link>
 

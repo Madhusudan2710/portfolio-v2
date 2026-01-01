@@ -220,7 +220,7 @@ export function Certifications() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-20 certs-header">
-          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-white">Achievements & Mastery</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-white font-signature">Achievements & Mastery</h2>
           <div className="w-32 h-2 mx-auto rounded-full mb-8" style={{ background: "linear-gradient(90deg, #00d4ff, #667eea)" }} />
           <p className="text-zinc-400 text-lg max-w-2xl mx-auto font-medium">
             A curated collection of my professional certifications and competitive achievements.

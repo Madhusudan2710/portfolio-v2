@@ -170,7 +170,7 @@ export function Portfolio() {
     <section ref={sectionRef} id="portfolio" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="portfolio-header text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Featured Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 font-signature">Featured Projects</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore my recent projects showcasing expertise in full-stack development and modern web technologies.

@@ -157,7 +157,7 @@ export function Skills() {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 skills-header">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">My Tech Universe</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 font-signature">My Tech Universe</h2>
           <div className="w-20 h-1.5 bg-primary mx-auto rounded-full mb-6" />
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Explore my skill islands — from frontend craftsmanship to backend architecture.

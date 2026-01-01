@@ -52,7 +52,7 @@ export function Experience() {
     <section ref={sectionRef} id="experience" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Professional Journey</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 font-signature">Professional Journey</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full mb-6" />
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             My career path and key experiences that shaped my expertise as a developer.

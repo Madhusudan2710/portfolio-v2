@@ -22,7 +22,7 @@ export default function Home() {
       <Certifications />
       <Contact />
       <ScrollToTop />
-      <footer className="py-12 border-t border-border mt-24">
+      <footer className="py-12 border-t border-border">
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-2 mb-6">
             <span className="text-xl font-bold tracking-tight uppercase">portfolio</span>

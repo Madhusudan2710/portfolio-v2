@@ -1,78 +1,88 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Added custom font face for Brotherland Signature Bold */
+@font-face {
+  font-family: "Brotherland Signature";
+  src: url("/fonts/BrotherlandsignatureBold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color scheme for modern tech portfolio with dark theme */
-  --background: oklch(0.15 0.02 250);
-  --foreground: oklch(0.98 0.01 250);
-  --card: oklch(0.18 0.02 250);
-  --card-foreground: oklch(0.98 0.01 250);
-  --popover: oklch(0.18 0.02 250);
-  --popover-foreground: oklch(0.98 0.01 250);
-  --primary: oklch(0.65 0.19 195);
+  /* Modern sophisticated color palette inspired by contemporary portfolio design */
+  --background: oklch(0.12 0.01 250);
+  --foreground: oklch(0.96 0.01 250);
+  --card: oklch(0.15 0.02 250);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.15 0.02 250);
+  --popover-foreground: oklch(0.96 0.01 250);
+  --primary: oklch(0.63 0.22 195);
   --primary-foreground: oklch(0.98 0.01 250);
-  --secondary: oklch(0.22 0.03 250);
-  --secondary-foreground: oklch(0.98 0.01 250);
-  --muted: oklch(0.25 0.02 250);
-  --muted-foreground: oklch(0.65 0.02 250);
-  --accent: oklch(0.65 0.19 195);
+  --secondary: oklch(0.2 0.02 250);
+  --secondary-foreground: oklch(0.96 0.01 250);
+  --muted: oklch(0.3 0.01 250);
+  --muted-foreground: oklch(0.6 0.02 250);
+  --accent: oklch(0.7 0.2 160);
   --accent-foreground: oklch(0.98 0.01 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0.01 250);
-  --border: oklch(0.28 0.03 250);
-  --input: oklch(0.22 0.03 250);
-  --ring: oklch(0.65 0.19 195);
-  --chart-1: oklch(0.65 0.19 195);
-  --chart-2: oklch(0.6 0.15 280);
-  --chart-3: oklch(0.7 0.18 160);
-  --chart-4: oklch(0.75 0.15 120);
-  --chart-5: oklch(0.6 0.2 340);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.18 0.02 250);
-  --sidebar-foreground: oklch(0.98 0.01 250);
-  --sidebar-primary: oklch(0.65 0.19 195);
+  --border: oklch(0.25 0.02 250);
+  --input: oklch(0.18 0.02 250);
+  --ring: oklch(0.63 0.22 195);
+  --chart-1: oklch(0.63 0.22 195);
+  --chart-2: oklch(0.65 0.18 280);
+  --chart-3: oklch(0.7 0.2 160);
+  --chart-4: oklch(0.75 0.18 120);
+  --chart-5: oklch(0.65 0.22 340);
+  --radius: 0.875rem;
+  --sidebar: oklch(0.15 0.02 250);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: oklch(0.63 0.22 195);
   --sidebar-primary-foreground: oklch(0.98 0.01 250);
-  --sidebar-accent: oklch(0.22 0.03 250);
-  --sidebar-accent-foreground: oklch(0.98 0.01 250);
-  --sidebar-border: oklch(0.28 0.03 250);
-  --sidebar-ring: oklch(0.65 0.19 195);
+  --sidebar-accent: oklch(0.2 0.02 250);
+  --sidebar-accent-foreground: oklch(0.96 0.01 250);
+  --sidebar-border: oklch(0.25 0.02 250);
+  --sidebar-ring: oklch(0.63 0.22 195);
+  /* Added custom font variable for titles */
+  --font-signature: "Brotherland Signature", cursive;
 }
 
 .dark {
-  --background: oklch(0.15 0.02 250);
-  --foreground: oklch(0.98 0.01 250);
-  --card: oklch(0.18 0.02 250);
-  --card-foreground: oklch(0.98 0.01 250);
-  --popover: oklch(0.18 0.02 250);
-  --popover-foreground: oklch(0.98 0.01 250);
-  --primary: oklch(0.65 0.19 195);
+  --background: oklch(0.12 0.01 250);
+  --foreground: oklch(0.96 0.01 250);
+  --card: oklch(0.15 0.02 250);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.15 0.02 250);
+  --popover-foreground: oklch(0.96 0.01 250);
+  --primary: oklch(0.63 0.22 195);
   --primary-foreground: oklch(0.98 0.01 250);
-  --secondary: oklch(0.22 0.03 250);
-  --secondary-foreground: oklch(0.98 0.01 250);
-  --muted: oklch(0.25 0.02 250);
-  --muted-foreground: oklch(0.65 0.02 250);
-  --accent: oklch(0.65 0.19 195);
+  --secondary: oklch(0.2 0.02 250);
+  --secondary-foreground: oklch(0.96 0.01 250);
+  --muted: oklch(0.3 0.01 250);
+  --muted-foreground: oklch(0.6 0.02 250);
+  --accent: oklch(0.7 0.2 160);
   --accent-foreground: oklch(0.98 0.01 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0.01 250);
-  --border: oklch(0.28 0.03 250);
-  --input: oklch(0.22 0.03 250);
-  --ring: oklch(0.65 0.19 195);
-  --chart-1: oklch(0.65 0.19 195);
-  --chart-2: oklch(0.6 0.15 280);
-  --chart-3: oklch(0.7 0.18 160);
-  --chart-4: oklch(0.75 0.15 120);
-  --chart-5: oklch(0.6 0.2 340);
-  --sidebar: oklch(0.18 0.02 250);
-  --sidebar-foreground: oklch(0.98 0.01 250);
-  --sidebar-primary: oklch(0.65 0.19 195);
+  --border: oklch(0.25 0.02 250);
+  --input: oklch(0.18 0.02 250);
+  --ring: oklch(0.63 0.22 195);
+  --chart-1: oklch(0.63 0.22 195);
+  --chart-2: oklch(0.65 0.18 280);
+  --chart-3: oklch(0.7 0.2 160);
+  --chart-4: oklch(0.75 0.18 120);
+  --chart-5: oklch(0.65 0.22 340);
+  --sidebar: oklch(0.15 0.02 250);
+  --sidebar-foreground: oklch(0.96 0.01 250);
+  --sidebar-primary: oklch(0.63 0.22 195);
   --sidebar-primary-foreground: oklch(0.98 0.01 250);
-  --sidebar-accent: oklch(0.22 0.03 250);
-  --sidebar-accent-foreground: oklch(0.98 0.01 250);
-  --sidebar-border: oklch(0.28 0.03 250);
-  --sidebar-ring: oklch(0.65 0.19 195);
+  --sidebar-accent: oklch(0.2 0.02 250);
+  --sidebar-accent-foreground: oklch(0.96 0.01 250);
+  --sidebar-border: oklch(0.25 0.02 250);
+  --sidebar-ring: oklch(0.63 0.22 195);
 }
 
 @theme inline {
@@ -114,6 +124,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-signature: "Brotherland Signature", cursive;
 }
 
 @layer base {
@@ -125,8 +136,14 @@
   }
 }
 
-/* Added custom animations and utilities for portfolio */
 @layer utilities {
+  /* Added signature font utility class */
+  .font-signature {
+    font-family: var(--font-signature);
+    font-weight: normal;
+    letter-spacing: 0.5px;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -143,6 +160,43 @@
     animation: glow 2s ease-in-out infinite alternate;
   }
 
+  /* Updated gradient to use new accent color */
+  .gradient-text {
+    background: linear-gradient(135deg, oklch(0.63 0.22 195), oklch(0.7 0.2 160));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Added grid background utility */
+  .grid-background {
+    background-image: linear-gradient(
+        0deg,
+        transparent 24%,
+        rgba(148, 0, 211, 0.1) 25%,
+        rgba(148, 0, 211, 0.1) 26%,
+        transparent 27%,
+        transparent 74%,
+        rgba(148, 0, 211, 0.1) 75%,
+        rgba(148, 0, 211, 0.1) 76%,
+        transparent 77%,
+        transparent
+      ),
+      linear-gradient(
+        90deg,
+        transparent 24%,
+        rgba(148, 0, 211, 0.1) 25%,
+        rgba(148, 0, 211, 0.1) 26%,
+        transparent 27%,
+        transparent 74%,
+        rgba(148, 0, 211, 0.1) 75%,
+        rgba(148, 0, 211, 0.1) 76%,
+        transparent 77%,
+        transparent
+      );
+    background-size: 50px 50px;
+  }
+
   @keyframes float {
     0%,
     100% {
@@ -155,17 +209,10 @@
 
   @keyframes glow {
     from {
-      box-shadow: 0 0 10px oklch(0.65 0.19 195 / 0.5);
+      box-shadow: 0 0 10px oklch(0.63 0.22 195 / 0.5);
     }
     to {
-      box-shadow: 0 0 20px oklch(0.65 0.19 195 / 0.8), 0 0 30px oklch(0.65 0.19 195 / 0.4);
+      box-shadow: 0 0 20px oklch(0.63 0.22 195 / 0.8), 0 0 30px oklch(0.63 0.22 195 / 0.4);
     }
-  }
-
-  .gradient-text {
-    background: linear-gradient(135deg, oklch(0.65 0.19 195), oklch(0.7 0.18 160));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 }
