@@ -1,22 +1,15 @@
 "use client"
 
-import {
-  useEffect,
-  useRef,
-  useCallback,
-  useState,
-  useLayoutEffect,
-} from "react"
+import type React from "react"
+
+import { useEffect, useRef, useCallback, useState, useLayoutEffect } from "react"
 import { gsap } from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import { Github, ExternalLink, FolderCode } from "lucide-react"
+import { Github, ExternalLink, Code2 } from "lucide-react"
 import Link from "next/link"
 
 gsap.registerPlugin(ScrollTrigger)
 
-// =====================
-// Types
-// =====================
 interface RawProject {
   id: string
   name: string
@@ -36,16 +29,11 @@ interface Project {
   icon: React.ReactNode
 }
 
-// =====================
-// Component
-// =====================
 export function Portfolio() {
   const sectionRef = useRef<HTMLElement>(null)
   const [projects, setProjects] = useState<Project[]>([])
 
-  // =====================
   // Fetch & normalize data
-  // =====================
   useEffect(() => {
     fetch("/projects.json")
       .then((res) => res.json())
@@ -57,15 +45,13 @@ export function Portfolio() {
           tags: p.technologies,
           link: p.link,
           github: p.github,
-          icon: <FolderCode className="w-16 h-16" />,
+          icon: <Code2 className="w-16 h-16" />,
         }))
         setProjects(normalized)
       })
   }, [])
 
-  // =====================
-  // Animations (SAFE)
-  // =====================
+  // Animations
   useLayoutEffect(() => {
     if (!sectionRef.current || projects.length === 0) return
 
@@ -95,7 +81,7 @@ export function Portfolio() {
             start: "top 95%",
             once: true,
           },
-        }
+        },
       )
     }, sectionRef)
 
@@ -103,41 +89,31 @@ export function Portfolio() {
     return () => ctx.revert()
   }, [projects])
 
-  // =====================
-  // Render card
-  // =====================
   const renderProjectCard = useCallback((project: Project) => {
     return (
       <article
         key={project.id}
-        className="project-card opacity-100 group relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-[2rem] overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10"
+        className="project-card opacity-100 group relative bg-gradient-to-br from-card/60 to-card/40 backdrop-blur-xl border border-border/50 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20"
         aria-labelledby={`project-${project.id}`}
       >
         <div className="flex flex-col h-full">
-          {/* Header */}
-          <header className="relative h-56 bg-gradient-to-br from-muted/50 to-muted/20 flex items-center justify-center p-12">
-            <div className="text-primary/40 group-hover:text-primary group-hover:scale-125 transition-all duration-700">
+          {/* Header with Icon */}
+          <div className="relative h-48 bg-gradient-to-br from-primary/10 via-accent/5 to-muted/10 flex items-center justify-center p-12 border-b border-border/30">
+            <div className="text-primary/30 group-hover:text-primary group-hover:scale-110 transition-all duration-700">
               {project.icon}
             </div>
 
-            {/* 🔥 Overlay (Desktop hover + Mobile always visible) */}
-            <nav
-              className="
-                absolute inset-0 
-                bg-primary/80 backdrop-blur-sm 
-                opacity-100 md:opacity-0 
-                md:group-hover:opacity-100
-                transition-all duration-500 
-                flex items-center justify-center gap-6
-              "
-            >
+            {/* Links Overlay */}
+            <nav className="absolute inset-0 bg-gradient-to-br from-primary/80 to-accent/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-6">
               {project.github && (
                 <Link
                   href={project.github}
                   target="_blank"
-                  aria-label="GitHub"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all"
+                  aria-label="View on GitHub"
                 >
-                  <Github className="w-6 h-6 text-background" />
+                  <Github className="w-6 h-6 text-white" />
                 </Link>
               )}
 
@@ -145,63 +121,66 @@ export function Portfolio() {
                 <Link
                   href={project.link}
                   target="_blank"
-                  aria-label="Live Demo"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all"
+                  aria-label="View Live Demo"
                 >
-                  <ExternalLink className="w-6 h-6 text-background" />
+                  <ExternalLink className="w-6 h-6 text-white" />
                 </Link>
               )}
             </nav>
-          </header>
+          </div>
 
           {/* Content */}
-          <div className="p-10 flex-1 flex flex-col">
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.tags.map((tag) => (
+          <div className="p-8 flex-1 flex flex-col">
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {project.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-[10px] font-bold uppercase bg-primary/10 text-primary rounded-lg"
+                  className="px-3 py-1 text-[11px] font-bold uppercase bg-primary/15 text-primary rounded-md hover:bg-primary/25 transition-colors"
                 >
                   {tag}
                 </span>
               ))}
+              {project.tags.length > 3 && (
+                <span className="px-3 py-1 text-[11px] font-bold uppercase text-muted-foreground">
+                  +{project.tags.length - 3} more
+                </span>
+              )}
             </div>
 
+            {/* Title */}
             <h3
               id={`project-${project.id}`}
-              className="text-2xl font-bold mb-3 group-hover:text-primary"
+              className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300"
             >
               {project.title}
             </h3>
 
-            <p className="text-muted-foreground flex-1">
-              {project.description}
-            </p>
+            {/* Description */}
+            <p className="text-muted-foreground text-sm flex-1 leading-relaxed">{project.description}</p>
           </div>
         </div>
       </article>
     )
   }, [])
 
-  // =====================
-  // JSX
-  // =====================
   return (
     <section ref={sectionRef} id="portfolio" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <header className="portfolio-header text-center mb-16">
-          <h2 className="text-4xl font-extrabold mb-4">My Portfolio</h2>
-          <div className="w-20 h-1.5 bg-primary mx-auto mb-6" />
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my recent projects and work.
+        <div className="portfolio-header text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">Featured Projects</h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-primary via-accent to-primary mx-auto rounded-full mb-6" />
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Explore my recent projects showcasing expertise in full-stack development and modern web technologies.
           </p>
-        </header>
+        </div>
 
-        {/* ✅ 3 PROJECTS PER ROW */}
-        <div className="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full">
+        {/* Projects Grid */}
+        <div className="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
           {projects.length === 0 ? (
-            <p className="text-center text-muted-foreground col-span-full">
-              Loading projects...
-            </p>
+            <p className="text-center text-muted-foreground col-span-full py-12">Loading projects...</p>
           ) : (
             projects.map(renderProjectCard)
           )}

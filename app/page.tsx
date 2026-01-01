@@ -7,6 +7,7 @@ import { Experience } from "@/components/experience"
 import { Portfolio } from "@/components/portfolio"
 import { Certifications } from "@/components/certifications"
 import { Contact } from "@/components/contact"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Portfolio />
       <Certifications />
       <Contact />
+      <ScrollToTop />
       <footer className="py-12 border-t border-border mt-24">
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center gap-2 mb-6">
